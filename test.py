@@ -1,9 +1,8 @@
 import cv2
 import numpy as np
-import random
 
-input_image = cv2.imread("Image_01.bmp", 0)
-_, thresholded_image = cv2.threshold(input_image, 128, 255, cv2.THRESH_BINARY)
+image = cv2.imread("Image_01.bmp", 0)
+_, thresholded_image = cv2.threshold(image, 128, 255, cv2.THRESH_BINARY)
 
 def dfs(label, x, y):
     stack = [(x,y)]
@@ -34,6 +33,7 @@ colors = [tuple(np.random.choice(range(256), size=3)) for _ in range(label)]
 for i in range(1, label):
     output_image[labels == i] = colors[i]
 
+cv2.imshow("original image", input_image)
 cv2.imshow("Labeled Image", output_image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
